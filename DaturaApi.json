@@ -1,0 +1,4336 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "Datura API",
+    "description": "The Datura API is a powerful suite of AI-driven tools designed to integrate natural language processing, AI-powered search, image generation, and data extraction into your applications. Whether you’re building intelligent search engines, automating content creation, analyzing text data, or generating AI-based media, Datura provides a robust and scalable solution.",
+    "version": "1.0.0"
+  },
+  "paths": {
+    "/desearch/ai/search": {
+      "post": {
+        "tags": [
+          "AI Search"
+        ],
+        "summary": "Desearch AI Search",
+        "description": "The Desearch API allows you to perform AI-powered web searches, gathering relevant information from multiple sources, including web pages, research papers, and social media discussions.",
+        "operationId": "desearch_desearch_ai_search_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ScraperStreamingSynapseRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "A JSON object mapping tool names to their search results.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "anyOf": [
+                    {
+                      "$ref": "#/components/schemas/ResponseData"
+                    },
+                    {
+                      "type": "object"
+                    },
+                    {
+                      "type": "string"
+                    }
+                  ],
+                  "title": "Response Desearch Desearch Ai Search Post"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UnauthorizedResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          },
+          "429": {
+            "description": "Too Many Requests",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/TooManyRequestsResponse"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/InternalServerErrorResponse"
+                }
+              }
+            }
+          },
+          "301": {
+            "description": "Moved Permanently",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/MovedPermanentlyResponse"
+                }
+              }
+            }
+          },
+          "304": {
+            "description": "Not Modified"
+          }
+        }
+      }
+    },
+    "/desearch/ai/search/links/web": {
+      "post": {
+        "tags": [
+          "AI Search"
+        ],
+        "summary": "Desearch Web Link Search",
+        "description": "This API allows users to search for links related to a given query (prompt) using multiple tools, excluding X (Twitter) Search. The API returns a list of relevant sources from selected platforms such as web pages, YouTube, Wikipedia, and ArXiv.",
+        "operationId": "search_links_web_desearch_ai_search_links_web_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/LinksSearchRequestWeb"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "A JSON object mapping tool names to their search results.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/WebSearchResponse"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UnauthorizedResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          },
+          "429": {
+            "description": "Too Many Requests",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/TooManyRequestsResponse"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/InternalServerErrorResponse"
+                }
+              }
+            }
+          },
+          "301": {
+            "description": "Moved Permanently"
+          },
+          "304": {
+            "description": "Not Modified"
+          }
+        }
+      }
+    },
+    "/desearch/ai/search/links/twitter": {
+      "post": {
+        "tags": [
+          "AI Search"
+        ],
+        "summary": "Desearch Х Posts Search",
+        "description": "The Х Posts Search API allows users to search for relevant links based on Х search queries with leveraging AI-powered models. This API analyze links from Х posts that match the given prompt. This API is useful for tracking trends, gathering insights, and retrieving real-time information from Х.",
+        "operationId": "search_links_twitter_desearch_ai_search_links_twitter_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/LinksSearchRequestTwitter"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "A JSON object mapping Х Search to its search results.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/TwitterSearchResponse"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UnauthorizedResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          },
+          "429": {
+            "description": "Too Many Requests",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/TooManyRequestsResponse"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/InternalServerErrorResponse"
+                }
+              }
+            }
+          },
+          "301": {
+            "description": "Moved Permanently",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/MovedPermanentlyResponse"
+                }
+              }
+            }
+          },
+          "304": {
+            "description": "Not Modified"
+          }
+        }
+      }
+    },
+    "/twitter": {
+      "get": {
+        "tags": [
+          "X Search"
+        ],
+        "summary": "Initiate X Search",
+        "description": "The Basic X Search API enables users to retrieve relevant links and tweets based on specified search queries without utilizing AI-driven models. It analyzes links from X posts that align with the provided search criteria.",
+        "operationId": "twitter_search_twitter_get",
+        "parameters": [
+          {
+            "name": "query",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "description": "Search query. For syntax, check https://docs.datura.ai/guides/capabilities/twitter-queries",
+              "title": "Query"
+            },
+            "description": "Search query. For syntax, check https://docs.datura.ai/guides/capabilities/twitter-queries",
+            "example": "Whats going on with Bittensor"
+          },
+          {
+            "name": "sort",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string",
+                  "pattern": "^(Top|Latest)$"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "description": "Sort by Top or Latest",
+              "title": "Sort"
+            },
+            "description": "Sort by Top or Latest",
+            "example": "Top"
+          },
+          {
+            "name": "user",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "description": "User to search for",
+              "title": "User"
+            },
+            "description": "User to search for",
+            "example": "elonmusk"
+          },
+          {
+            "name": "start_date",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "description": "Start date in UTC (YYYY-MM-DD format)",
+              "title": "Start Date"
+            },
+            "description": "Start date in UTC (YYYY-MM-DD format)",
+            "example": "2024-12-01"
+          },
+          {
+            "name": "end_date",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "description": "End date in UTC (YYYY-MM-DD format)",
+              "title": "End Date"
+            },
+            "description": "End date in UTC (YYYY-MM-DD format)",
+            "example": "2025-02-25"
+          },
+          {
+            "name": "lang",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "description": "Language code (e.g., en, es, fr)",
+              "title": "Lang"
+            },
+            "description": "Language code (e.g., en, es, fr)",
+            "example": "en"
+          },
+          {
+            "name": "verified",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "boolean"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "description": "Filter for verified users",
+              "title": "Verified"
+            },
+            "description": "Filter for verified users",
+            "example": true
+          },
+          {
+            "name": "blue_verified",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "boolean"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "description": "Filter for blue checkmark verified users",
+              "title": "Blue Verified"
+            },
+            "description": "Filter for blue checkmark verified users",
+            "example": true
+          },
+          {
+            "name": "is_quote",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "boolean"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "description": "Include only tweets with quotes",
+              "title": "Is Quote"
+            },
+            "description": "Include only tweets with quotes",
+            "example": true
+          },
+          {
+            "name": "is_video",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "boolean"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "description": "Include only tweets with videos",
+              "title": "Is Video"
+            },
+            "description": "Include only tweets with videos",
+            "example": true
+          },
+          {
+            "name": "is_image",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "boolean"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "description": "Include only tweets with images",
+              "title": "Is Image"
+            },
+            "description": "Include only tweets with images",
+            "example": true
+          },
+          {
+            "name": "min_retweets",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "integer"
+                },
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "description": "Minimum number of retweets",
+              "title": "Min Retweets"
+            },
+            "description": "Minimum number of retweets",
+            "example": 1
+          },
+          {
+            "name": "min_replies",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "integer"
+                },
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "description": "Minimum number of replies",
+              "title": "Min Replies"
+            },
+            "description": "Minimum number of replies",
+            "example": 1
+          },
+          {
+            "name": "min_likes",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "integer"
+                },
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "description": "Minimum number of likes",
+              "title": "Min Likes"
+            },
+            "description": "Minimum number of likes",
+            "example": 1
+          },
+          {
+            "name": "count",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "integer",
+                  "maximum": 100,
+                  "minimum": 1
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "description": "Number of tweets to retrieve",
+              "default": 20,
+              "title": "Count"
+            },
+            "description": "Number of tweets to retrieve",
+            "example": 10
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "A JSON object mapping X Search to its search results.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "anyOf": [
+                    {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/components/schemas/TwitterScraperTweet"
+                      }
+                    },
+                    {
+                      "type": "object"
+                    }
+                  ],
+                  "title": "Response Twitter Search Twitter Get"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UnauthorizedResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          },
+          "429": {
+            "description": "Too Many Requests",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/TooManyRequestsResponse"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/InternalServerErrorResponse"
+                }
+              }
+            }
+          },
+          "301": {
+            "description": "Moved Permanently",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/MovedPermanentlyResponse"
+                }
+              }
+            }
+          },
+          "304": {
+            "description": "Not Modified"
+          }
+        }
+      }
+    },
+    "/web": {
+      "get": {
+        "tags": [
+          "Web Search"
+        ],
+        "summary": "Basic Web Search",
+        "description": "This API allows users to search for any information over the web. This replicates a typical search engine experience, where users can search for any information they need.",
+        "operationId": "web_search_web_get",
+        "parameters": [
+          {
+            "name": "query",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "description": "The search query string, e.g., 'latest news on AI'.",
+              "title": "Query"
+            },
+            "description": "The search query string, e.g., 'latest news on AI'.",
+            "example": "latest news on AI"
+          },
+          {
+            "name": "num",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "description": "Count of results to get",
+              "title": "Num"
+            },
+            "description": "Count of results to get",
+            "example": 10
+          },
+          {
+            "name": "start",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "maximum": 100,
+              "minimum": 1,
+              "description": "How many results to skip (used for pagination with num)",
+              "title": "Start"
+            },
+            "description": "How many results to skip (used for pagination with num)",
+            "example": 0
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "A JSON object mapping Web Search to its search results.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/WebSearchResultsResponse"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UnauthorizedResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          },
+          "429": {
+            "description": "Too Many Requests",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/TooManyRequestsResponse"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/InternalServerErrorResponse"
+                }
+              }
+            }
+          },
+          "301": {
+            "description": "Moved Permanently",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/MovedPermanentlyResponse"
+                }
+              }
+            }
+          },
+          "304": {
+            "description": "Not Modified"
+          }
+        }
+      }
+    },
+    "/twitter/urls": {
+      "get": {
+        "tags": [
+          "X Search"
+        ],
+        "summary": "Fetch Posts by URLs",
+        "description": "Retrieve detailed information for multiple posts by providing their respective URLs. This endpoint extracts metadata, content, and relevant engagement metrics associated with each specified URL.",
+        "operationId": "twitter_by_urls_twitter_urls_get",
+        "parameters": [
+          {
+            "name": "urls",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              },
+              "description": "List of urls that is to be retrieved.",
+              "title": "Urls"
+            },
+            "description": "List of urls that is to be retrieved.",
+            "example": [
+              "https://x.com/RacingTriple/status/1892527552029499853"
+            ]
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "A JSON object mapping tweet URLs to their details.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/TwitterByIdResponse"
+                  },
+                  "title": "Response Twitter By Urls Twitter Urls Get"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UnauthorizedResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          },
+          "429": {
+            "description": "Too Many Requests",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/TooManyRequestsResponse"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/InternalServerErrorResponse"
+                }
+              }
+            }
+          },
+          "301": {
+            "description": "Moved Permanently",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/MovedPermanentlyResponse"
+                }
+              }
+            }
+          },
+          "304": {
+            "description": "Not Modified"
+          }
+        }
+      }
+    },
+    "/twitter/post": {
+      "get": {
+        "tags": [
+          "X Search"
+        ],
+        "summary": "Retrieve Post by ID",
+        "description": "Retrieve comprehensive details of a post by specifying its unique ID. This endpoint provides metadata, content, and engagement metrics associated with the specified post.",
+        "operationId": "twitter_by_id_twitter_post_get",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "title": "Id"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "A JSON object representing the post details.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/TwitterByIdResponse"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UnauthorizedResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          },
+          "429": {
+            "description": "Too Many Requests",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/TooManyRequestsResponse"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/InternalServerErrorResponse"
+                }
+              }
+            }
+          },
+          "301": {
+            "description": "Moved Permanently",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/MovedPermanentlyResponse"
+                }
+              }
+            }
+          },
+          "304": {
+            "description": "Not Modified"
+          }
+        }
+      }
+    },
+    "/twitter/post/user": {
+      "get": {
+        "tags": [
+          "X Search"
+        ],
+        "summary": "Search X Posts by User",
+        "description": "The X posts search by user API allows users to search for relevant links or tweets based on X search queries without leveraging AI-powered models. This API analyze links from X posts that match the given prompt.",
+        "operationId": "tweets_by_user_twitter_post_user_get",
+        "parameters": [
+          {
+            "name": "user",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "description": "User to search for",
+              "title": "User"
+            },
+            "description": "User to search for",
+            "example": "elonmusk"
+          },
+          {
+            "name": "query",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "description": "Search query. For syntax, check https://docs.datura.ai/guides/capabilities/twitter-queries",
+              "default": "",
+              "title": "Query"
+            },
+            "description": "Search query. For syntax, check https://docs.datura.ai/guides/capabilities/twitter-queries",
+            "example": "Whats going on with Bittensor"
+          },
+          {
+            "name": "count",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "maximum": 100,
+              "minimum": 1,
+              "description": "Number of tweets to retrieve",
+              "default": 10,
+              "title": "Count"
+            },
+            "description": "Number of tweets to retrieve",
+            "example": 10
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "A JSON object mapping Twitter Search to its search results.",
+            "content": {
+              "application/json": {
+                "schema": {
+
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UnauthorizedResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          },
+          "429": {
+            "description": "Too Many Requests",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/TooManyRequestsResponse"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/InternalServerErrorResponse"
+                }
+              }
+            }
+          },
+          "301": {
+            "description": "Moved Permanently",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/MovedPermanentlyResponse"
+                }
+              }
+            }
+          },
+          "304": {
+            "description": "Not Modified"
+          }
+        }
+      }
+    },
+    "/twitter/latest": {
+      "get": {
+        "tags": [
+          "X Search"
+        ],
+        "summary": "Retrieve Latest X Posts",
+        "description": "The X Latest Posts Search by User API enables users to retrieve relevant links or tweets based on specified search queries without utilizing AI-powered models. It analyzes and extracts links from X posts that match the given search criteria.",
+        "operationId": "latest_tweets_by_user_twitter_latest_get",
+        "parameters": [
+          {
+            "name": "user",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "description": "User to search for",
+              "title": "User"
+            },
+            "description": "User to search for",
+            "example": "elonmusk"
+          },
+          {
+            "name": "count",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "maximum": 100,
+              "minimum": 1,
+              "description": "Number of tweets to retrieve",
+              "default": 10,
+              "title": "Count"
+            },
+            "description": "Number of tweets to retrieve",
+            "example": 10
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "A JSON object mapping Twitter Search to its search results.",
+            "content": {
+              "application/json": {
+                "schema": {
+
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UnauthorizedResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          },
+          "429": {
+            "description": "Too Many Requests",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/TooManyRequestsResponse"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/InternalServerErrorResponse"
+                }
+              }
+            }
+          },
+          "301": {
+            "description": "Moved Permanently",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/MovedPermanentlyResponse"
+                }
+              }
+            }
+          },
+          "304": {
+            "description": "Not Modified"
+          }
+        }
+      }
+    },
+    "/twitter/replies": {
+      "get": {
+        "tags": [
+          "X Search"
+        ],
+        "summary": "Fetch User’s Tweets and Replies",
+        "description": "The tweets and replies by user API allows users to search for relevant links or tweets based on X search queries without leveraging AI-powered models. This API analyze links from X posts that match the given prompt.",
+        "operationId": "tweets_replies_by_user_twitter_replies_get",
+        "parameters": [
+          {
+            "name": "user",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "description": "The username of the user to search for.",
+              "title": "User"
+            },
+            "description": "The username of the user to search for.",
+            "example": "elonmusk"
+          },
+          {
+            "name": "count",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "maximum": 100,
+              "minimum": 1,
+              "description": "The number of tweets to fetch.",
+              "default": 10,
+              "title": "Count"
+            },
+            "description": "The number of tweets to fetch.",
+            "example": 10
+          },
+          {
+            "name": "query",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "description": "Search query. For syntax, check https://docs.datura.ai/guides/capabilities/twitter-queries",
+              "default": "",
+              "title": "Query"
+            },
+            "description": "Search query. For syntax, check https://docs.datura.ai/guides/capabilities/twitter-queries",
+            "example": "latest news on AI"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "A JSON object mapping Twitter Search to its search results.",
+            "content": {
+              "application/json": {
+                "schema": {
+
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UnauthorizedResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          },
+          "429": {
+            "description": "Too Many Requests",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/TooManyRequestsResponse"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/InternalServerErrorResponse"
+                }
+              }
+            }
+          },
+          "301": {
+            "description": "Moved Permanently",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/MovedPermanentlyResponse"
+                }
+              }
+            }
+          },
+          "304": {
+            "description": "Not Modified"
+          }
+        }
+      }
+    },
+    "/twitter/replies/post": {
+      "get": {
+        "tags": [
+          "X Search"
+        ],
+        "summary": "Retrieve Replies for a Post",
+        "description": "The Tweets and Replies by User API enables users to retrieve relevant tweets and replies based on specified search queries without relying on AI-powered models. It analyzes and extracts links from X posts that align with the provided search criteria.",
+        "operationId": "tweets_replies_by_post_twitter_replies_post_get",
+        "parameters": [
+          {
+            "name": "post_id",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "description": "The ID of the post to search for.",
+              "title": "Post Id"
+            },
+            "description": "The ID of the post to search for.",
+            "example": "1234567890"
+          },
+          {
+            "name": "count",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "maximum": 100,
+              "minimum": 1,
+              "description": "The number of tweets to fetch.",
+              "default": 10,
+              "title": "Count"
+            },
+            "description": "The number of tweets to fetch.",
+            "example": 10
+          },
+          {
+            "name": "query",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "description": "Search query. For syntax, check https://docs.datura.ai/guides/capabilities/twitter-queries",
+              "default": "",
+              "title": "Query"
+            },
+            "description": "Search query. For syntax, check https://docs.datura.ai/guides/capabilities/twitter-queries",
+            "example": "latest news on AI"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "A JSON object mapping Twitter Search to its search results.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "anyOf": [
+                    {
+                      "$ref": "#/components/schemas/TwitterScraperTweet"
+                    },
+                    {
+                      "type": "object"
+                    }
+                  ],
+                  "title": "Response Tweets Replies By Post Twitter Replies Post Get"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UnauthorizedResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          },
+          "429": {
+            "description": "Too Many Requests",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/TooManyRequestsResponse"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/InternalServerErrorResponse"
+                }
+              }
+            }
+          },
+          "301": {
+            "description": "Moved Permanently",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/MovedPermanentlyResponse"
+                }
+              }
+            }
+          },
+          "304": {
+            "description": "Not Modified"
+          }
+        }
+      }
+    },
+    "/twitter/retweets/post": {
+      "get": {
+        "tags": [
+          "X Search"
+        ],
+        "summary": "Retrieve Tweets by Post",
+        "description": "This endpoint retrieves all retweets associated with a specific post. By providing the post ID, users can access detailed retweet information, including metadata, user engagement metrics, and associated content.",
+        "operationId": "tweets_retweets_by_post_twitter_retweets_post_get",
+        "parameters": [
+          {
+            "name": "post_id",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "description": "The ID of the post to search for.",
+              "title": "Post Id"
+            },
+            "description": "The ID of the post to search for.",
+            "example": "1234567890"
+          },
+          {
+            "name": "count",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "maximum": 100,
+              "minimum": 1,
+              "description": "The number of tweets to fetch.",
+              "default": 10,
+              "title": "Count"
+            },
+            "description": "The number of tweets to fetch.",
+            "example": 10
+          },
+          {
+            "name": "query",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "description": "Search query. For syntax, check https://docs.datura.ai/guides/capabilities/twitter-queries",
+              "default": "",
+              "title": "Query"
+            },
+            "description": "Search query. For syntax, check https://docs.datura.ai/guides/capabilities/twitter-queries",
+            "example": "latest news on AI"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "A JSON object mapping Twitter Search to its search results.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "anyOf": [
+                    {
+                      "$ref": "#/components/schemas/TwitterScraperTweet"
+                    },
+                    {
+                      "type": "object"
+                    }
+                  ],
+                  "title": "Response Tweets Retweets By Post Twitter Retweets Post Get"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UnauthorizedResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          },
+          "429": {
+            "description": "Too Many Requests",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/TooManyRequestsResponse"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/InternalServerErrorResponse"
+                }
+              }
+            }
+          },
+          "301": {
+            "description": "Moved Permanently",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/MovedPermanentlyResponse"
+                }
+              }
+            }
+          },
+          "304": {
+            "description": "Not Modified"
+          }
+        }
+      }
+    },
+    "/twitter/user": {
+      "get": {
+        "tags": [
+          "X Search"
+        ],
+        "summary": "Search X User by Username",
+        "description": "This endpoint allows users to retrieve detailed information about an X (Twitter) user by providing their username. The response includes user metadata such as display name, profile details, follower count, and other relevant information.",
+        "operationId": "twitter_user_by_id_twitter_user_get",
+        "parameters": [
+          {
+            "name": "user",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "description": "User to search for",
+              "title": "User"
+            },
+            "description": "User to search for",
+            "example": "elonmusk"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "A JSON object mapping Twitter Search to its search results.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "anyOf": [
+                    {
+                      "$ref": "#/components/schemas/TwitterUserResponse"
+                    },
+                    {
+                      "type": "object"
+                    }
+                  ],
+                  "title": "Response Twitter User By Id Twitter User Get"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UnauthorizedResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          },
+          "429": {
+            "description": "Too Many Requests",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/TooManyRequestsResponse"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/InternalServerErrorResponse"
+                }
+              }
+            }
+          },
+          "301": {
+            "description": "Moved Permanently",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/MovedPermanentlyResponse"
+                }
+              }
+            }
+          },
+          "304": {
+            "description": "Not Modified"
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "BaseSearchResult": {
+        "properties": {
+          "organic_results": {
+            "anyOf": [
+              {
+                "items": {
+                  "$ref": "#/components/schemas/OrganicResults"
+                },
+                "type": "array"
+              },
+              {
+                "type": "object"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Organic Results"
+          }
+        },
+        "type": "object",
+        "required": [
+          "organic_results"
+        ],
+        "title": "BaseSearchResult"
+      },
+      "Completion": {
+        "properties": {
+          "key_tweets": {
+            "items": {
+              "$ref": "#/components/schemas/Key_tweets"
+            },
+            "type": "array",
+            "title": "Key Tweets"
+          },
+          "twitter_summary": {
+            "type": "string",
+            "title": "Twitter Summary",
+            "example": "This is an example Twitter summary."
+          },
+          "summary": {
+            "type": "string",
+            "title": "Summary",
+            "example": "This is an example summary."
+          }
+        },
+        "type": "object",
+        "required": [
+          "key_tweets",
+          "twitter_summary",
+          "summary"
+        ],
+        "title": "Completion"
+      },
+      "DateFilterEnum": {
+        "type": "string",
+        "enum": [
+          "PAST_24_HOURS",
+          "PAST_2_DAYS",
+          "PAST_WEEK",
+          "PAST_2_WEEKS",
+          "PAST_MONTH",
+          "PAST_2_MONTHS",
+          "PAST_YEAR",
+          "PAST_2_YEARS"
+        ],
+        "title": "DateFilterEnum"
+      },
+      "HTTPValidationError": {
+        "properties": {
+          "detail": {
+            "items": {
+              "additionalProperties": {
+                "anyOf": [
+                  {
+                    "type": "string"
+                  },
+                  {
+                    "type": "integer"
+                  }
+                ]
+              },
+              "type": "object"
+            },
+            "type": "array",
+            "title": "Detail",
+            "example": [
+              {
+                "loc": [
+                  "string",
+                  0],
+                "msg": "string",
+                "type": "string"
+              }
+            ]
+          }
+        },
+        "type": "object",
+        "required": [
+          "detail"
+        ],
+        "title": "HTTPValidationError"
+      },
+      "Inline": {
+        "properties": {
+          "title": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Web title",
+            "example": "Example Web Page Title"
+          },
+          "link": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Web link",
+            "example": "https://example.com"
+          }
+        },
+        "type": "object",
+        "required": [
+          "title",
+          "link"
+        ],
+        "title": "Inline"
+      },
+      "InternalServerErrorResponse": {
+        "properties": {
+          "detail": {
+            "additionalProperties": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "integer"
+                }
+              ]
+            },
+            "type": "object",
+            "title": "Detail",
+            "example": {
+              "description": "An unexpected error occurred on the server.",
+              "error_code": 500,
+              "message": "Internal Server Error"
+            }
+          }
+        },
+        "type": "object",
+        "required": [
+          "detail"
+        ],
+        "title": "InternalServerErrorResponse"
+      },
+      "Key_tweets": {
+        "properties": {
+          "text": {
+            "type": "string",
+            "title": "Text",
+            "example": "This is an example tweet text."
+          },
+          "url": {
+            "type": "string",
+            "title": "Url",
+            "example": "https://twitter.com/example_tweet"
+          }
+        },
+        "type": "object",
+        "required": [
+          "text",
+          "url"
+        ],
+        "title": "Key_tweets"
+      },
+      "LinksSearchRequestTwitter": {
+        "properties": {
+          "prompt": {
+            "type": "string",
+            "title": "Prompt",
+            "description": "Search query prompt",
+            "example": "What are the recent sport events?"
+          },
+          "model": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/ModelEnum"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "description": "Model to use for scraping. Options: NOVA, ORBIT, HORIZON",
+            "default": "NOVA",
+            "example": "NOVA"
+          }
+        },
+        "type": "object",
+        "required": [
+          "prompt"
+        ],
+        "title": "LinksSearchRequestTwitter"
+      },
+      "LinksSearchRequestWeb": {
+        "properties": {
+          "prompt": {
+            "type": "string",
+            "title": "Prompt",
+            "description": "Search query prompt",
+            "example": "What are the recent sport events?"
+          },
+          "tools": {
+            "items": {
+              "anyOf": [
+                {
+                  "$ref": "#/components/schemas/WebToolEnum"
+                },
+                {
+                  "type": "string"
+                }
+              ]
+            },
+            "type": "array",
+            "title": "Tools",
+            "description": "List of tools to search with",
+            "example": [
+              "web",
+              "hackernews",
+              "reddit",
+              "wikipedia",
+              "youtube",
+              "arxiv"
+            ]
+          },
+          "model": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/ModelEnum"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "description": "Model to use for scraping. Options: NOVA, ORBIT, HORIZON",
+            "default": "NOVA",
+            "example": "NOVA"
+          }
+        },
+        "type": "object",
+        "required": [
+          "prompt",
+          "tools"
+        ],
+        "title": "LinksSearchRequestWeb"
+      },
+      "ModelEnum": {
+        "type": "string",
+        "enum": [
+          "NOVA",
+          "ORBIT",
+          "HORIZON"
+        ],
+        "title": "ModelEnum"
+      },
+      "MovedPermanentlyResponse": {
+        "properties": {
+          "detail": {
+            "additionalProperties": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "integer"
+                }
+              ]
+            },
+            "type": "object",
+            "title": "Detail",
+            "example": {
+              "error_code": 301,
+              "location": "https://new-url.com",
+              "message": "Moved Permanently"
+            }
+          }
+        },
+        "type": "object",
+        "required": [
+          "detail"
+        ],
+        "title": "MovedPermanentlyResponse"
+      },
+      "OrganicResults": {
+        "properties": {
+          "title": {
+            "type": "string",
+            "title": "Title",
+            "example": "Example Title"
+          },
+          "url": {
+            "type": "string",
+            "title": "Url",
+            "example": "https://example.com"
+          },
+          "link": {
+            "type": "string",
+            "title": "Link",
+            "example": "https://example.com/link"
+          },
+          "snippet": {
+            "type": "string",
+            "title": "Snippet",
+            "example": "This is an example snippet from the search result."
+          },
+          "summary_description": {
+            "type": "string",
+            "title": "Summary Description",
+            "example": "This is a summary description of the search result."
+          }
+        },
+        "type": "object",
+        "required": [
+          "title",
+          "url",
+          "link",
+          "snippet",
+          "summary_description"
+        ],
+        "title": "OrganicResults"
+      },
+      "ResponseData": {
+        "properties": {
+          "wikipedia_search_results": {
+            "anyOf": [
+              {
+                "items": {
+                  "$ref": "#/components/schemas/BaseSearchResult"
+                },
+                "type": "array"
+              },
+              {
+                "type": "object"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Wikipedia Search Results",
+            "description": "Search results retrieved from Wikipedia, containing relevant articles based on the query."
+          },
+          "youtube_search_results": {
+            "anyOf": [
+              {
+                "items": {
+                  "$ref": "#/components/schemas/BaseSearchResult"
+                },
+                "type": "array"
+              },
+              {
+                "type": "object"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Youtube Search Results",
+            "description": "Search results from YouTube, including relevant videos matching the search criteria."
+          },
+          "arxiv_search_results": {
+            "anyOf": [
+              {
+                "items": {
+                  "$ref": "#/components/schemas/BaseSearchResult"
+                },
+                "type": "array"
+              },
+              {
+                "type": "object"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Arxiv Search Results",
+            "description": "Search results from the Arxiv repository, returning academic papers related to the query."
+          },
+          "reddit_search_results": {
+            "anyOf": [
+              {
+                "items": {
+                  "$ref": "#/components/schemas/BaseSearchResult"
+                },
+                "type": "array"
+              },
+              {
+                "type": "object"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Reddit Search Results",
+            "description": "Search results from Reddit, providing discussions and posts related to the search query."
+          },
+          "hacker_news_search_results": {
+            "anyOf": [
+              {
+                "items": {
+                  "$ref": "#/components/schemas/BaseSearchResult"
+                },
+                "type": "array"
+              },
+              {
+                "type": "object"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Hacker News Search Results",
+            "description": "Search results from Hacker News, listing articles and discussions relevant to the query."
+          },
+          "text_chunks": {
+            "anyOf": [
+              {
+                "items": {
+                  "$ref": "#/components/schemas/TextChunk"
+                },
+                "type": "array"
+              },
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Text Chunks",
+            "description": "Extracted or summarized text chunks related to the search query, which may be in list or string format."
+          },
+          "completion_links": {
+            "anyOf": [
+              {
+                "items": {
+                  "type": "string"
+                },
+                "type": "array"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Completion Links",
+            "description": "A list of generated links related to the search query for further exploration."
+          },
+          "search_completion_links": {
+            "anyOf": [
+              {
+                "items": {
+                  "type": "string"
+                },
+                "type": "array"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Search Completion Links",
+            "description": "Generated links specifically related to search completion suggestions or follow-up queries."
+          },
+          "completion": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/Completion"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "description": "Generated completion text or response, typically used in AI-generated content results."
+          },
+          "miner_link_scores": {
+            "anyOf": [
+              {
+                "additionalProperties": {
+                  "type": "string"
+                },
+                "type": "object"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Miner Link Scores",
+            "description": "A list of miner link scores, typically used in AI-generated content results."
+          }
+        },
+        "type": "object",
+        "title": "ResponseData"
+      },
+      "ResultTypeEnum": {
+        "type": "string",
+        "enum": [
+          "ONLY_LINKS",
+          "LINKS_WITH_SUMMARIES",
+          "LINKS_WITH_FINAL_SUMMARY"
+        ],
+        "title": "ResultTypeEnum"
+      },
+      "ScraperStreamingSynapseRequest": {
+        "properties": {
+          "prompt": {
+            "type": "string",
+            "title": "Prompt",
+            "description": "Search query prompt",
+            "example": "Bittensor"
+          },
+          "tools": {
+            "items": {
+              "anyOf": [
+                {
+                  "$ref": "#/components/schemas/ToolEnum"
+                },
+                {
+                  "type": "string"
+                }
+              ]
+            },
+            "type": "array",
+            "title": "Tools",
+            "description": "A list of tools to be used for the search",
+            "example": [
+              "web",
+              "hackernews",
+              "reddit",
+              "wikipedia",
+              "youtube",
+              "twitter",
+              "arxiv"
+            ]
+          },
+          "model": {
+            "$ref": "#/components/schemas/ModelEnum",
+            "description": "The model to be used for the search",
+            "example": "NOVA"
+          },
+          "date_filter": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/DateFilterEnum"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "description": "The date filter to be used for the search",
+            "example": "PAST_24_HOURS"
+          },
+          "streaming": {
+            "type": "boolean",
+            "title": "Streaming",
+            "description": "Whether to stream results",
+            "example": true
+          },
+          "result_type": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/ResultTypeEnum"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "description": "The result type to be used for the search",
+            "example": "LINKS_WITH_FINAL_SUMMARY"
+          },
+          "system_message": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "System Message",
+            "description": "The system message to be used for the search",
+            "example": "Summarize the content by categorizing key points into 'Pros' and 'Cons' sections."
+          }
+        },
+        "type": "object",
+        "required": [
+          "prompt",
+          "tools",
+          "model",
+          "date_filter",
+          "streaming"
+        ],
+        "title": "ScraperStreamingSynapseRequest"
+      },
+      "TextChunk": {
+        "properties": {
+          "twitter_summary": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array",
+            "title": "Twitter Summary"
+          }
+        },
+        "type": "object",
+        "required": [
+          "twitter_summary"
+        ],
+        "title": "TextChunk"
+      },
+      "TooManyRequestsResponse": {
+        "properties": {
+          "detail": {
+            "additionalProperties": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "integer"
+                }
+              ]
+            },
+            "type": "object",
+            "title": "Detail",
+            "example": {
+              "error_code": 429,
+              "message": "Too Many Requests",
+              "retry_after": "60 seconds"
+            }
+          }
+        },
+        "type": "object",
+        "required": [
+          "detail"
+        ],
+        "title": "TooManyRequestsResponse"
+      },
+      "ToolEnum": {
+        "type": "string",
+        "enum": [
+          "web",
+          "hackernews",
+          "reddit",
+          "wikipedia",
+          "youtube",
+          "twitter",
+          "arxiv"
+        ],
+        "title": "ToolEnum"
+      },
+      "Tweet": {
+        "properties": {
+          "user": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/User"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Tweet user"
+          },
+          "id": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Tweet ID",
+            "example": "987654321"
+          },
+          "text": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Tweet text",
+            "example": "This is an example tweet."
+          },
+          "reply_count": {
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Tweet reply count",
+            "example": 10
+          },
+          "retweet_count": {
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Tweet retweet count",
+            "example": 5
+          },
+          "like_count": {
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Tweet like count",
+            "example": 100
+          },
+          "view_count": {
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Tweet view count",
+            "example": 1000
+          },
+          "quote_count": {
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Tweet quote count",
+            "example": 2
+          },
+          "impression_count": {
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Tweet impression count",
+            "example": 1500
+          },
+          "bookmark_count": {
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Tweet bookmark count",
+            "example": 3
+          },
+          "url": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Tweet URL",
+            "example": "https://twitter.com/example_tweet"
+          },
+          "created_at": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Tweet creation date",
+            "example": "2023-01-01T00:00:00Z"
+          },
+          "media": {
+            "anyOf": [
+              {
+                "items": {
+
+                },
+                "type": "array"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Tweet media",
+            "example": []
+          },
+          "is_quote_tweet": {
+            "anyOf": [
+              {
+                "type": "boolean"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Tweet is a quote tweet",
+            "example": false
+          },
+          "is_retweet": {
+            "anyOf": [
+              {
+                "type": "boolean"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Tweet is a retweet",
+            "example": false
+          },
+          "lang": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Lang",
+            "description": "Language code (e.g., en, es, fr)",
+            "example": "en"
+          },
+          "conversation_id": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Conversation Id",
+            "example": "1892717639455109181"
+          },
+          "in_reply_to_screen_name": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Reply to Screen Name",
+            "example": "null"
+          },
+          "in_reply_to_status_id": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Reply to Status ID",
+            "example": "null"
+          },
+          "in_reply_to_user_id": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Reply to User ID",
+            "example": "null"
+          },
+          "quoted_status_id": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Quoted Status ID",
+            "example": "null"
+          },
+          "quote": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Tweet quote",
+            "example": "null"
+          },
+          "entities": {
+            "anyOf": [
+              {
+                "type": "object"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Tweet entities",
+            "example": {
+
+            }
+          },
+          "summary_description": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Tweet summary description",
+            "example": "This is a summary of the tweet."
+          }
+        },
+        "type": "object",
+        "required": [
+          "user",
+          "id",
+          "text",
+          "reply_count",
+          "retweet_count",
+          "like_count",
+          "view_count",
+          "quote_count",
+          "impression_count",
+          "bookmark_count",
+          "url",
+          "created_at",
+          "media",
+          "is_quote_tweet",
+          "is_retweet",
+          "lang",
+          "conversation_id",
+          "in_reply_to_screen_name",
+          "in_reply_to_status_id",
+          "in_reply_to_user_id",
+          "quoted_status_id",
+          "quote",
+          "entities",
+          "summary_description"
+        ],
+        "title": "Tweet"
+      },
+      "TwitterByIdResponse": {
+        "properties": {
+          "user": {
+            "$ref": "#/components/schemas/TwitterScraperUser"
+          },
+          "id": {
+            "type": "string",
+            "title": "Id",
+            "description": "Unique identifier for the tweet.",
+            "example": "1892527552029499853"
+          },
+          "text": {
+            "type": "string",
+            "title": "Text",
+            "description": "The tweet's content.",
+            "example": "New episode of The Motorsport Recently Show now out on YouTube and Spotify..."
+          },
+          "reply_count": {
+            "type": "integer",
+            "title": "Reply Count",
+            "description": "Number of replies to the tweet.",
+            "example": 0
+          },
+          "retweet_count": {
+            "type": "integer",
+            "title": "Retweet Count",
+            "description": "Number of retweets.",
+            "example": 0
+          },
+          "like_count": {
+            "type": "integer",
+            "title": "Like Count",
+            "description": "Number of likes the tweet has received.",
+            "example": 0
+          },
+          "quote_count": {
+            "type": "integer",
+            "title": "Quote Count",
+            "description": "Number of times the tweet has been quoted.",
+            "example": 0
+          },
+          "bookmark_count": {
+            "type": "integer",
+            "title": "Bookmark Count",
+            "description": "Number of bookmarks on the tweet.",
+            "example": 0
+          },
+          "url": {
+            "type": "string",
+            "maxLength": 2083,
+            "minLength": 1,
+            "format": "uri",
+            "title": "Url",
+            "description": "Direct URL to the tweet.",
+            "example": "https://x.com/RacingTriple/status/1892527552029499853"
+          },
+          "created_at": {
+            "type": "string",
+            "title": "Created At",
+            "description": "Timestamp of when the tweet was created.",
+            "example": "Thu Feb 20 10:51:44 +0000 2025"
+          },
+          "media": {
+            "items": {
+
+            },
+            "type": "array",
+            "title": "Media",
+            "description": "List of media attachments, if any.",
+            "example": []
+          },
+          "is_quote_tweet": {
+            "type": "boolean",
+            "title": "Is Quote Tweet",
+            "description": "Indicates if the tweet is a quoted tweet.",
+            "example": false
+          },
+          "is_retweet": {
+            "type": "boolean",
+            "title": "Is Retweet",
+            "description": "Indicates if the tweet is a retweet.",
+            "example": false
+          },
+          "lang": {
+            "type": "string",
+            "title": "Lang",
+            "description": "Language code of the tweet.",
+            "example": "en"
+          },
+          "conversation_id": {
+            "type": "string",
+            "title": "Conversation Id",
+            "description": "ID of the conversation thread the tweet belongs to.",
+            "example": "1892527552029499853"
+          },
+          "in_reply_to_screen_name": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "In Reply To Screen Name",
+            "description": "Screen name of the user this tweet is replying to (if applicable)."
+          },
+          "in_reply_to_status_id": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "In Reply To Status Id",
+            "description": "ID of the tweet being replied to (if applicable)."
+          },
+          "in_reply_to_user_id": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "In Reply To User Id",
+            "description": "User ID of the tweet author being replied to (if applicable)."
+          },
+          "quoted_status_id": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Quoted Status Id",
+            "description": "ID of the tweet that was quoted (if applicable)."
+          },
+          "quote": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Quote",
+            "description": "Quoted text from another tweet (if applicable)."
+          },
+          "display_text_range": {
+            "items": {
+              "type": "integer"
+            },
+            "type": "array",
+            "title": "Display Text Range",
+            "description": "Character range in the tweet where text is displayed.",
+            "example": [0, 166]
+          },
+          "entities": {
+            "$ref": "#/components/schemas/TwitterTweetEntities",
+            "description": "Metadata about hashtags, mentions, links, and other entities within the tweet.",
+            "example": {
+              "hashtags": [],
+              "symbols": [],
+              "timestamps": [],
+              "urls": [
+                {
+                  "display_url": "open.spotify.com/episode/6lW29d…",
+                  "expanded_url": "https://open.spotify.com/episode/6lW29dxjnWQPmSB5ilXnIi?si=a66a9c3b16bf41fe",
+                  "indices": [118, 141],
+                  "url": "https://t.co/N5oaoJRJx0"
+                },
+                {
+                  "display_url": "youtu.be/0V1qT7ALPEE",
+                  "expanded_url": "https://youtu.be/0V1qT7ALPEE",
+                  "indices": [143, 166],
+                  "url": "https://t.co/zdmk4zd13y"
+                }
+              ],
+              "user_mentions": []
+            }
+          },
+          "extended_entities": {
+            "type": "object",
+            "title": "Extended Entities",
+            "description": "Extended metadata about media attachments.",
+            "example": {
+
+            }
+          }
+        },
+        "type": "object",
+        "required": [
+          "user",
+          "id",
+          "text",
+          "reply_count",
+          "retweet_count",
+          "like_count",
+          "quote_count",
+          "bookmark_count",
+          "url",
+          "created_at",
+          "is_quote_tweet",
+          "is_retweet",
+          "lang",
+          "conversation_id",
+          "in_reply_to_screen_name",
+          "in_reply_to_status_id",
+          "in_reply_to_user_id",
+          "quoted_status_id",
+          "quote",
+          "display_text_range",
+          "entities"
+        ],
+        "title": "TwitterByIdResponse"
+      },
+      "TwitterScraperMedia": {
+        "properties": {
+          "media_url": {
+            "type": "string",
+            "title": "Media Url",
+            "default": ""
+          },
+          "type": {
+            "type": "string",
+            "title": "Type",
+            "default": ""
+          }
+        },
+        "type": "object",
+        "title": "TwitterScraperMedia"
+      },
+      "TwitterScraperTweet": {
+        "properties": {
+          "user": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/TwitterScraperUser"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "id": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Id",
+            "example": "987654321"
+          },
+          "text": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Text",
+            "example": "This is an example tweet."
+          },
+          "reply_count": {
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Reply Count",
+            "example": 10
+          },
+          "retweet_count": {
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Retweet Count",
+            "example": 5
+          },
+          "like_count": {
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Like Count",
+            "example": 100
+          },
+          "view_count": {
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "View Count",
+            "example": 1000
+          },
+          "quote_count": {
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Quote Count",
+            "example": 2
+          },
+          "impression_count": {
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Impression Count",
+            "example": 1500
+          },
+          "bookmark_count": {
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Bookmark Count",
+            "example": 3
+          },
+          "url": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Url",
+            "example": "https://twitter.com/example_tweet"
+          },
+          "created_at": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Created At",
+            "example": "2023-01-01T00:00:00Z"
+          },
+          "media": {
+            "anyOf": [
+              {
+                "items": {
+                  "$ref": "#/components/schemas/TwitterScraperMedia"
+                },
+                "type": "array"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Media",
+            "example": []
+          },
+          "is_quote_tweet": {
+            "anyOf": [
+              {
+                "type": "boolean"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Is Quote Tweet",
+            "example": false
+          },
+          "is_retweet": {
+            "anyOf": [
+              {
+                "type": "boolean"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Is Retweet",
+            "example": false
+          }
+        },
+        "type": "object",
+        "required": [
+          "user",
+          "id",
+          "text",
+          "reply_count",
+          "retweet_count",
+          "like_count",
+          "view_count",
+          "quote_count",
+          "impression_count",
+          "bookmark_count",
+          "url",
+          "created_at",
+          "is_quote_tweet",
+          "is_retweet"
+        ],
+        "title": "TwitterScraperTweet"
+      },
+      "TwitterScraperUser": {
+        "properties": {
+          "id": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Id",
+            "example": "123456789"
+          },
+          "url": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Url",
+            "example": "https://twitter.com/example_user"
+          },
+          "name": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Name",
+            "example": "John Doe"
+          },
+          "username": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Username",
+            "example": "johndoe"
+          },
+          "created_at": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Created At",
+            "example": "2023-01-01T00:00:00Z"
+          },
+          "description": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Description",
+            "example": "This is an example user description."
+          },
+          "favourites_count": {
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Favourites Count",
+            "example": 100
+          },
+          "followers_count": {
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Followers Count",
+            "example": 1500
+          },
+          "listed_count": {
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Listed Count",
+            "example": 10
+          },
+          "media_count": {
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Media Count",
+            "example": 50
+          },
+          "profile_image_url": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Profile Image Url",
+            "example": "https://example.com/profile.jpg"
+          },
+          "statuses_count": {
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Statuses Count",
+            "example": 500
+          },
+          "verified": {
+            "anyOf": [
+              {
+                "type": "boolean"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Verified",
+            "example": true
+          },
+          "is_blue_verified": {
+            "anyOf": [
+              {
+                "type": "boolean"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Indicates if the user is Blue Tick verified",
+            "example": true
+          },
+          "entities": {
+            "anyOf": [
+              {
+                "type": "object"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Tweet entities",
+            "example": {
+
+            }
+          },
+          "can_dm": {
+            "anyOf": [
+              {
+                "type": "boolean"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Indicates if the user is has enabled the accounts DM",
+            "example": true
+          },
+          "can_media_tag": {
+            "anyOf": [
+              {
+                "type": "boolean"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Indicates if the tweet has media.",
+            "example": true
+          },
+          "location": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "User location.",
+            "example": "Jamaica"
+          }
+        },
+        "type": "object",
+        "required": [
+          "id",
+          "url",
+          "name",
+          "username",
+          "created_at",
+          "description",
+          "favourites_count",
+          "followers_count",
+          "listed_count",
+          "media_count",
+          "profile_image_url",
+          "statuses_count",
+          "verified",
+          "entities"
+        ],
+        "title": "TwitterScraperUser"
+      },
+      "TwitterSearchResponse": {
+        "properties": {
+          "miner_tweets": {
+            "anyOf": [
+              {
+                "items": {
+                  "$ref": "#/components/schemas/Tweet"
+                },
+                "type": "array"
+              },
+              {
+                "type": "object"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Miner Tweets",
+            "description": "Miner tweets"
+          }
+        },
+        "type": "object",
+        "required": [
+          "miner_tweets"
+        ],
+        "title": "TwitterSearchResponse"
+      },
+      "TwitterTweetEntities": {
+        "properties": {
+          "hashtags": {
+            "items": {
+              "type": "object"
+            },
+            "type": "array",
+            "title": "Hashtags"
+          },
+          "symbols": {
+            "items": {
+              "type": "object"
+            },
+            "type": "array",
+            "title": "Symbols"
+          },
+          "timestamps": {
+            "items": {
+              "type": "object"
+            },
+            "type": "array",
+            "title": "Timestamps"
+          },
+          "urls": {
+            "items": {
+              "type": "object"
+            },
+            "type": "array",
+            "title": "Urls"
+          },
+          "user_mentions": {
+            "items": {
+              "type": "object"
+            },
+            "type": "array",
+            "title": "User Mentions"
+          }
+        },
+        "type": "object",
+        "title": "TwitterTweetEntities"
+      },
+      "TwitterUserEntities": {
+        "properties": {
+          "description": {
+            "additionalProperties": {
+              "items": {
+                "type": "object"
+              },
+              "type": "array"
+            },
+            "type": "object",
+            "title": "Description"
+          }
+        },
+        "type": "object",
+        "title": "TwitterUserEntities"
+      },
+      "TwitterUserResponse": {
+        "properties": {
+          "id": {
+            "type": "string",
+            "title": "Id",
+            "description": "User ID"
+          },
+          "screen_name": {
+            "type": "string",
+            "title": "Screen Name",
+            "description": "User's screen name"
+          },
+          "is_blue_verified": {
+            "type": "boolean",
+            "title": "Is Blue Verified",
+            "description": "Indicates if the user is Blue Tick verified"
+          },
+          "following": {
+            "type": "boolean",
+            "title": "Following",
+            "description": "Indicates if the user is being followed"
+          },
+          "can_dm": {
+            "type": "boolean",
+            "title": "Can Dm",
+            "description": "Indicates if the user can be direct messaged"
+          },
+          "can_media_tag": {
+            "type": "boolean",
+            "title": "Can Media Tag",
+            "description": "Indicates if the user can be tagged in media"
+          },
+          "created_at": {
+            "type": "string",
+            "title": "Created At",
+            "description": "Account creation date"
+          },
+          "default_profile": {
+            "type": "boolean",
+            "title": "Default Profile",
+            "description": "Indicates if the user has the default profile"
+          },
+          "default_profile_image": {
+            "type": "boolean",
+            "title": "Default Profile Image",
+            "description": "Indicates if the user has the default profile image"
+          },
+          "description": {
+            "type": "string",
+            "title": "Description",
+            "description": "User description"
+          },
+          "entities": {
+            "$ref": "#/components/schemas/TwitterUserEntities",
+            "description": "User entities"
+          },
+          "fast_followers_count": {
+            "type": "integer",
+            "title": "Fast Followers Count",
+            "description": "Count of fast followers"
+          },
+          "favourites_count": {
+            "type": "integer",
+            "title": "Favourites Count",
+            "description": "Count of favourites"
+          },
+          "followers_count": {
+            "type": "integer",
+            "title": "Followers Count",
+            "description": "Count of followers"
+          },
+          "friends_count": {
+            "type": "integer",
+            "title": "Friends Count",
+            "description": "Count of friends"
+          },
+          "has_custom_timelines": {
+            "type": "boolean",
+            "title": "Has Custom Timelines",
+            "description": "Indicates if the user has custom timelines"
+          },
+          "is_translator": {
+            "type": "boolean",
+            "title": "Is Translator",
+            "description": "Indicates if the user is a translator"
+          },
+          "listed_count": {
+            "type": "integer",
+            "title": "Listed Count",
+            "description": "Count of lists the user is on"
+          },
+          "location": {
+            "type": "string",
+            "title": "Location",
+            "description": "User location"
+          },
+          "media_count": {
+            "type": "integer",
+            "title": "Media Count",
+            "description": "Count of media"
+          },
+          "name": {
+            "type": "string",
+            "title": "Name",
+            "description": "User's name"
+          },
+          "normal_followers_count": {
+            "type": "integer",
+            "title": "Normal Followers Count",
+            "description": "Count of normal followers"
+          },
+          "pinned_tweet_ids_str": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array",
+            "title": "Pinned Tweet Ids Str",
+            "description": "List of pinned tweet IDs"
+          },
+          "possibly_sensitive": {
+            "type": "boolean",
+            "title": "Possibly Sensitive",
+            "description": "Indicates if the user is possibly sensitive"
+          },
+          "profile_banner_url": {
+            "anyOf": [
+              {
+                "type": "string",
+                "maxLength": 2083,
+                "minLength": 1,
+                "format": "uri"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Profile Banner Url",
+            "description": "URL of the profile banner"
+          },
+          "profile_image_url_https": {
+            "anyOf": [
+              {
+                "type": "string",
+                "maxLength": 2083,
+                "minLength": 1,
+                "format": "uri"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Profile Image Url Https",
+            "description": "HTTPS URL of the profile image"
+          },
+          "profile_interstitial_type": {
+            "type": "string",
+            "title": "Profile Interstitial Type",
+            "description": "Profile interstitial type"
+          },
+          "statuses_count": {
+            "type": "integer",
+            "title": "Statuses Count",
+            "description": "Count of statuses"
+          },
+          "translator_type": {
+            "type": "string",
+            "title": "Translator Type",
+            "description": "Translator type"
+          },
+          "verified": {
+            "type": "boolean",
+            "title": "Verified",
+            "description": "Indicates if the user is verified"
+          },
+          "want_retweets": {
+            "type": "boolean",
+            "title": "Want Retweets",
+            "description": "Indicates if the user wants retweets"
+          },
+          "withheld_in_countries": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array",
+            "title": "Withheld In Countries",
+            "description": "List of countries where the user is withheld"
+          }
+        },
+        "type": "object",
+        "required": [
+          "id",
+          "screen_name",
+          "is_blue_verified",
+          "following",
+          "can_dm",
+          "can_media_tag",
+          "created_at",
+          "default_profile",
+          "default_profile_image",
+          "description",
+          "entities",
+          "fast_followers_count",
+          "favourites_count",
+          "followers_count",
+          "friends_count",
+          "has_custom_timelines",
+          "is_translator",
+          "listed_count",
+          "location",
+          "media_count",
+          "name",
+          "normal_followers_count",
+          "pinned_tweet_ids_str",
+          "possibly_sensitive",
+          "profile_banner_url",
+          "profile_image_url_https",
+          "profile_interstitial_type",
+          "statuses_count",
+          "translator_type",
+          "verified",
+          "want_retweets",
+          "withheld_in_countries"
+        ],
+        "title": "TwitterUserResponse"
+      },
+      "UnauthorizedResponse": {
+        "properties": {
+          "detail": {
+            "additionalProperties": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "integer"
+                }
+              ]
+            },
+            "type": "object",
+            "title": "Detail",
+            "example": {
+              "error_code": 401,
+              "message": "Unauthorized",
+              "reason": "Invalid API key"
+            }
+          }
+        },
+        "type": "object",
+        "required": [
+          "detail"
+        ],
+        "title": "UnauthorizedResponse"
+      },
+      "User": {
+        "properties": {
+          "id": {
+            "type": "string",
+            "title": "User ID",
+            "example": "123456789"
+          },
+          "url": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "User profile URL",
+            "example": "https://twitter.com/example_user"
+          },
+          "name": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "User name",
+            "example": "John Doe"
+          },
+          "username": {
+            "type": "string",
+            "title": "User username",
+            "example": "johndoe"
+          },
+          "created_at": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "User creation date",
+            "example": "2023-01-01T00:00:00Z"
+          },
+          "description": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "User description",
+            "example": "This is an example user description."
+          },
+          "favourites_count": {
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "User favourites count",
+            "example": 100
+          },
+          "followers_count": {
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "User followers count",
+            "example": 1500
+          },
+          "listed_count": {
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "User listed count",
+            "example": 10
+          },
+          "media_count": {
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "User media count",
+            "example": 50
+          },
+          "profile_image_url": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "User profile image URL",
+            "example": "https://example.com/profile.jpg"
+          },
+          "statuses_count": {
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "User statuses count",
+            "example": 500
+          },
+          "verified": {
+            "anyOf": [
+              {
+                "type": "boolean"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "User verification status",
+            "example": true
+          },
+          "is_blue_verified": {
+            "anyOf": [
+              {
+                "type": "boolean"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Indicates if the user is Blue Tick verified",
+            "example": true
+          },
+          "can_dm": {
+            "anyOf": [
+              {
+                "type": "boolean"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Indicates if the user is has enabled the accounts DM",
+            "example": true
+          },
+          "can_media_tag": {
+            "anyOf": [
+              {
+                "type": "boolean"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Indicates if the tweet has media.",
+            "example": true
+          },
+          "location": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "User location.",
+            "example": "Jamaica"
+          }
+        },
+        "type": "object",
+        "required": [
+          "id",
+          "username"
+        ],
+        "title": "User"
+      },
+      "Web": {
+        "properties": {
+          "position": {
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Position"
+          },
+          "title": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Web title",
+            "example": "Example Web Page Title"
+          },
+          "link": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Web link",
+            "example": "https://example.com"
+          },
+          "redirect_link": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Web redirect link",
+            "example": "https://example.com/redirect"
+          },
+          "displayed_link": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Web displayed link",
+            "example": "https://example.com/displayed"
+          },
+          "favicon": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Web favicon",
+            "example": "https://example.com/favicon.ico"
+          },
+          "date": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Web date",
+            "example": "17 hours ago"
+          },
+          "snippet": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Web snippet",
+            "example": "This is an example snippet from the web page."
+          },
+          "snippet_highlighted_words": {
+            "anyOf": [
+              {
+                "items": {
+                  "type": "string"
+                },
+                "type": "array"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Web snippet highlighted words",
+            "example": [
+              "example",
+              "snippet"
+            ]
+          },
+          "source": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Web source",
+            "example": "On Location"
+          },
+          "inline": {
+            "anyOf": [
+              {
+                "items": {
+                  "$ref": "#/components/schemas/Inline"
+                },
+                "type": "array"
+              },
+              {
+                "type": "object"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Web inline",
+            "example": [
+              {
+                "link": "https://example.com",
+                "title": "Example Web Page Title"
+              }
+            ]
+          },
+          "summary_description": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Summary Description",
+            "example": "List of bitcoin companies - Wikipedia"
+          }
+        },
+        "type": "object",
+        "required": [
+          "position",
+          "title",
+          "link",
+          "redirect_link",
+          "displayed_link",
+          "favicon",
+          "date",
+          "snippet",
+          "snippet_highlighted_words",
+          "source",
+          "inline",
+          "summary_description"
+        ],
+        "title": "Web"
+      },
+      "WebSearchResponse": {
+        "properties": {
+          "youtube_search_results": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/WebSearchResults"
+              },
+              {
+                "items": {
+
+                },
+                "type": "array"
+              },
+              {
+                "type": "object"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Youtube Search Results",
+            "description": "Youtube search results"
+          },
+          "hacker_news_search_results": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/WebSearchResults"
+              },
+              {
+                "items": {
+
+                },
+                "type": "array"
+              },
+              {
+                "type": "object"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Hacker News Search Results",
+            "description": "Hacker News search results"
+          },
+          "reddit_search_results": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/WebSearchResults"
+              },
+              {
+                "items": {
+
+                },
+                "type": "array"
+              },
+              {
+                "type": "object"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Reddit Search Results",
+            "description": "Reddit search results"
+          },
+          "arxiv_search_results": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/WebSearchResults"
+              },
+              {
+                "items": {
+
+                },
+                "type": "array"
+              },
+              {
+                "type": "object"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Arxiv Search Results",
+            "description": "Arxiv search results"
+          },
+          "wikipedia_search_results": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/WebSearchResults"
+              },
+              {
+                "items": {
+
+                },
+                "type": "array"
+              },
+              {
+                "type": "object"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Wikipedia Search Results",
+            "description": "Wikipedia search results"
+          },
+          "search_results": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/WebSearchResults"
+              },
+              {
+                "items": {
+
+                },
+                "type": "array"
+              },
+              {
+                "type": "object"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Search Results",
+            "description": "Search results"
+          }
+        },
+        "type": "object",
+        "required": [
+          "youtube_search_results",
+          "hacker_news_search_results",
+          "reddit_search_results",
+          "arxiv_search_results",
+          "wikipedia_search_results",
+          "search_results"
+        ],
+        "title": "WebSearchResponse"
+      },
+      "WebSearchResultItem": {
+        "properties": {
+          "title": {
+            "type": "string",
+            "title": "Title",
+            "description": "EXCLUSIVE Major coffee buyers face losses as Colombia ..."
+          },
+          "snippet": {
+            "type": "string",
+            "title": "Snippet",
+            "description": "Coffee farmers in Colombia, the world's No. 2 arabica producer, have failed to deliver up to 1 million bags of beans this year or nearly 10% ..."
+          },
+          "link": {
+            "type": "string",
+            "maxLength": 2083,
+            "minLength": 1,
+            "format": "uri",
+            "title": "Link",
+            "description": "https://www.reuters.com/world/americas/exclusive-major-coffee-buyers-face-losses-colombia-farmers-fail-deliver-2021-10-11/"
+          },
+          "date": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Date",
+            "description": "21 hours ago"
+          },
+          "source": {
+            "type": "string",
+            "title": "Source",
+            "description": "Reuters"
+          },
+          "author": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Author",
+            "description": "Reuters"
+          },
+          "image": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Image",
+            "description": "https://static.reuters.com/resources/2021/10/11/Reuters/Reuters_20211011_0000_01.jpg?w=800&h=533&q=80&crop=1"
+          },
+          "favicon": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Favicon",
+            "description": "https://static.reuters.com/resources/2021/10/11/Reuters/Reuters_20211011_0000_01.jpg?w=800&h=533&q=80&crop=1"
+          },
+          "highlights": {
+            "anyOf": [
+              {
+                "items": {
+                  "type": "string"
+                },
+                "type": "array"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Highlights",
+            "description": "List of highlights as strings."
+          }
+        },
+        "type": "object",
+        "required": [
+          "title",
+          "snippet",
+          "link",
+          "source"
+        ],
+        "title": "WebSearchResultItem"
+      },
+      "WebSearchResults": {
+        "properties": {
+          "organic_results": {
+            "anyOf": [
+              {
+                "items": {
+                  "$ref": "#/components/schemas/Web"
+                },
+                "type": "array"
+              },
+              {
+                "type": "object"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Organic Results"
+          }
+        },
+        "type": "object",
+        "required": [
+          "organic_results"
+        ],
+        "title": "WebSearchResults"
+      },
+      "WebSearchResultsResponse": {
+        "properties": {
+          "data": {
+            "items": {
+              "$ref": "#/components/schemas/WebSearchResultItem"
+            },
+            "type": "array",
+            "title": "Data"
+          }
+        },
+        "type": "object",
+        "required": [
+          "data"
+        ],
+        "title": "WebSearchResultsResponse"
+      },
+      "WebToolEnum": {
+        "type": "string",
+        "enum": [
+          "web",
+          "hackernews",
+          "reddit",
+          "wikipedia",
+          "youtube",
+          "arxiv"
+        ],
+        "title": "WebToolEnum"
+      }
+    },
+    "securitySchemes": {
+      "ApiKeyAuth": {
+        "type": "apiKey",
+        "in": "header",
+        "name": "Authorization"
+      }
+    }
+  },
+  "security": [
+    {
+      "ApiKeyAuth": []
+    }
+  ],
+  "servers": [
+    {
+      "url": "https://apis.datura.ai"
+    }
+  ]
+}
