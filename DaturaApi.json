@@ -19,6 +19,9 @@
             "application/json": {
               "schema": {
                 "$ref": "#/components/schemas/ScraperStreamingSynapseRequest"
+              },
+              "example": {
+                "prompt": "Bittensor"
               }
             }
           },
